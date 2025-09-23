@@ -1,7 +1,7 @@
 import { tasks } from "../models/tasks.js";
 
 function list(req, res) {
-    res.json(tasks);
+    res.render("task", { tasks });
 }
 
 function get(req, res) {
@@ -11,24 +11,38 @@ function get(req, res) {
 }
 
 function create(req, res) {
-    const body = req.body;
+    const { title, description, completed } = req.body;
 
     const task = {
         id: tasks.length + 1,
-        ...body,
+        title: title,
+        description: description,
+        completed: completed === "on"
     };
 
     tasks.push(task);
-    res.json(task);
+    res.redirect('/task');
 }
 
 function remove(req, res) {
     const { id } = req.params;
-    const index = tasks.indexOf(t => t.id === Number(id));
+    const index = tasks.findIndex(t => t.id === Number(id));
 
     tasks.splice(index, 1);
-
-    res.send("Success")
+    res.redirect('/');
 }
 
-export { list, get, create, remove };
+function changeStatus(req, res) {
+    const { id } = req.params;
+    const task = tasks.find(t => t.id == id);
+    task.completed = !task.completed;
+
+    res.redirect('/');
+}
+
+function displayForm(req, res) {
+    res.render("new", { title: "New Task" });
+}
+
+
+export { list, get, create, remove, displayForm, changeStatus };

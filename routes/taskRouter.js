@@ -4,8 +4,13 @@ import express from 'express'
 const taskRouter = express.Router();
 
 taskRouter.get('/', taskController.list);
+
+taskRouter.get('/new', taskController.displayForm);
+taskRouter.post('/new', taskController.create);
 taskRouter.get('/:id', taskController.get);
-taskRouter.post('/', taskController.create);
-taskRouter.delete('/:id', taskController.remove);
+
+taskRouter.post('/:id/toggle', taskController.changeStatus);
+
+taskRouter.post('/:id/delete', taskController.remove);
 
 export default taskRouter;

@@ -1,7 +1,5 @@
 function get(req, res) {
-    res.json({
-        "name": "About",
-    });
+    res.render("about");
 }
 
 export { get };

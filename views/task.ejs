@@ -1,0 +1,28 @@
+<h1>Task List</h1>
+
+<% if (tasks.length> 0) { %>
+    <ul>
+        <% tasks.forEach(task=> { %>
+            <li class="<%= task.completed ? 'completed' : '' %>">
+                <h3>
+                    <%= task.title %>
+                </h3>
+                <p>
+                    <%= task.description %>
+                </p>
+                <p>Status: <%= task.completed ? "✅ Done" : "⏳ Pending" %>
+                </p>
+
+                <form action="/task/<%= task.id %>/toggle" method="POST">
+                    <button type="submit">Toggle Status</button>
+                </form>
+
+                <form action="/task/<%= task.id %>/delete" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+            <% }) %>
+    </ul>
+    <% } else { %>
+        <p>No tasks yet.</p>
+        <% } %>
