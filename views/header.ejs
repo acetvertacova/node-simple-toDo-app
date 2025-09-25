@@ -1,10 +1,92 @@
-<header>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/task/new">New Task</a></li>
-            <li><a href="/about">About</a></li>
-        </ul>
-    </nav>
-    <hr>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Header</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 20px 0;
+        }
+
+        nav {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        nav a.active {
+            color: #000;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 16px;
+            }
+
+            nav ul {
+                gap: 24px;
+            }
+
+            nav a {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/task/new">New Task</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Example content -->
+    <div style="max-width: 600px; margin: 40px auto; padding: 0 20px;">
+        <h1>Page Content</h1>
+        <p>This is an example of how the header looks with content below it.</p>
+    </div>
+</body>
+
+</html>
