@@ -180,7 +180,7 @@ Controller->>View: render index.ejs
 ### 1. Home Redirect
 - User visits `/` → immediately redirected to `/task`.
 
-<img src="../todo-app/usage/getAll.png">
+<img src="/usage/getAll.png">
 
 ### 2. Task List Page (`/task`)
 - Displays all tasks in a list.
