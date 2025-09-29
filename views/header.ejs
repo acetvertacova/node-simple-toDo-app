@@ -26,16 +26,17 @@
         }
 
         nav {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 32px;
+            gap: 40px;
             align-items: center;
+            justify-content: center;
         }
 
         nav a {
@@ -44,6 +45,7 @@
             font-size: 16px;
             font-weight: 400;
             transition: color 0.2s;
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -57,7 +59,7 @@
 
         @media (max-width: 768px) {
             nav {
-                padding: 0 16px;
+                padding: 0 20px;
             }
 
             nav ul {
@@ -81,12 +83,6 @@
             </ul>
         </nav>
     </header>
-
-    <!-- Example content -->
-    <div style="max-width: 600px; margin: 40px auto; padding: 0 20px;">
-        <h1>Page Content</h1>
-        <p>This is an example of how the header looks with content below it.</p>
-    </div>
 </body>
 
 </html>

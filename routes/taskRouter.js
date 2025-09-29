@@ -6,13 +6,10 @@ import express from 'express'
 const taskRouter = express.Router();
 
 taskRouter.get('/', taskController.list);
-
 taskRouter.get('/new', taskController.displayForm);
 taskRouter.post('/new', taskController.create);
 taskRouter.get('/:id', [idValidator, validate], taskController.get);
-
 taskRouter.post('/:id/toggle', [idValidator, validate], taskController.changeStatus);
-
 taskRouter.post('/:id/delete', [idValidator, validate], taskController.remove);
 
 export default taskRouter;

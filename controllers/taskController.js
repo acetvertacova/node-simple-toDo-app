@@ -1,43 +1,35 @@
-import { tasks } from "../models/tasks.js";
+import { tasks } from "../db/tasks.js";
+import * as taskModel from "../models/task.js";
 
 function list(req, res) {
-    res.render("task", { tasks });
+    res.render("index", {
+        tasks: taskModel.getAll()
+    });
 }
 
 function get(req, res) {
     const { id } = req.params;
-    const task = tasks.find((t) => t.id === Number(id));
-    res.json(task);
+    const task = taskModel.findById(+id)
+    res.render("task", { task });
 }
 
 function create(req, res) {
-    const { title, description, completed } = req.body;
-
-    const task = {
-        id: tasks.length + 1,
-        title: title,
-        description: description,
-        completed: completed === "on"
-    };
-
-    tasks.push(task);
+    const task = req.body;
+    taskModel.store(task);
     res.redirect('/task');
 }
 
 function remove(req, res) {
     const { id } = req.params;
-    const index = tasks.findIndex(t => t.id === Number(id));
-
-    tasks.splice(index, 1);
+    taskModel.deleteById(+id)
     res.redirect('/');
 }
 
 function changeStatus(req, res) {
     const { id } = req.params;
-    const task = tasks.find(t => t.id == id);
-    task.completed = !task.completed;
+    taskModel.toggleStatus(id);
 
-    res.redirect('/');
+    res.redirect('/task');
 }
 
 function displayForm(req, res) {

@@ -6,14 +6,16 @@ import dotenv from "dotenv";
 import expressLayouts from "express-ejs-layouts";
 import { fileURLToPath } from "url";
 
-const PORT = process.env.PORT || 3000;
 const app = express();
-dotenv.config();
-app.use(express.urlencoded({ extended: true }))
-
-app.use(express.json());
+app.disable("x-powered-by");
+const PORT = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+dotenv.config();
+
+app.use(express.urlencoded({ extended: true }))
+
 app.set("views", path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
@@ -31,6 +33,6 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log("Server started at http://localhost:3000");
+    console.log("Server started http://localhost:3000");
 });
 
