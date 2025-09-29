@@ -172,6 +172,7 @@ Controller->>Model: getAll()
 ```
 
 Model-->>Controller: [task1, task2, ...]
+
 Controller->>View: render index.ejs
 
 ## 📌 UI Overview
